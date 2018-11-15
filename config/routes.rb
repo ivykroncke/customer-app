@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     get :me, to: 'me#me'
   end
 
+  namespace :api do
+    resources :person
+  end
+
   root to: "main#index"
 end
