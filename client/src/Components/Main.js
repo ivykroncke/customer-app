@@ -1,5 +1,23 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const MainContainer = styled.div`
+margin: 5vh 5vw;
+`
+
+const StyledHeading = styled.h1`
+text-align: center;
+size: 3rem;
+margin: 5vw;
+`
+
+const ContactContainer = styled.div`
+background-color: lightgray;
+border-radius: 5rem;
+margin: 2vh;
+padding: 5vh 7vw;
+`
 
 export default class Main extends Component {
 
@@ -16,18 +34,20 @@ export default class Main extends Component {
   render() {
 
     const peopleData = this.state.people.map((person, i) => {
-      return (<div key={i}>
-        <div> {person.first_name} </div>
-        <div> {person.title} </div>
-        <div> {person.email_address} </div>
-      </div>)
+      return (
+        <ContactContainer key={i}>
+          <div> {person.display_name} </div>
+          <div> {person.title} </div>
+          <div> {person.email_address} </div>
+        </ContactContainer>
+        )
     })
 
     return (
-      <div>
-        <div>These are our customers:</div>
+      <MainContainer>
+        <StyledHeading>All </StyledHeading>
         <div>{peopleData}</div>
-      </div>
+      </MainContainer>
     )
   }
 }
