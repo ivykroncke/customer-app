@@ -13,7 +13,7 @@ Technologies Used:
 * Axios, HTTParty
 
 ### Wireframes
-
+![Wireframe](https://github.com/ivykroncke/people-app/blob/master/README-images/Wireframe-MyPerson.jpg)
 
 ### Process
 
