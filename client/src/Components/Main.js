@@ -45,7 +45,7 @@ export default class Main extends Component {
 
     return (
       <MainContainer>
-        <StyledHeading>All </StyledHeading>
+        <StyledHeading>All People</StyledHeading>
         <Frequency people={this.state.people}/>
         <div>{peopleData}</div>
       </MainContainer>

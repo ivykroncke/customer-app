@@ -1,7 +1,25 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import ShowFrequency from './ShowFrequency';
+import styled from 'styled-components'
+
+const FreqWrapper = styled.div`
+text-align: center;
+`
+
+const StyledButton = styled.div`
+background-color: darkgray;
+border-radius: 2rem;
+color: white;
+padding: 3vh;
+margin: 5vh;
+`
 
 export default class Frequency extends Component {
+    state = {
+        frequency: [],
+        buttonShows: true
+    }
 
 componentDidMount = async () => {
     const response = await axios.get('/api/people')
@@ -16,7 +34,8 @@ sortTheCharacters = (sortableArray) => {
     const sortedArray = frequencyInIndexOneArray.sort(function(a, b) {
         return a[0] - b[0]
     })
-    console.log('SortedArray', sortedArray)
+    sortedArray.reverse()
+    this.setState({ frequency: sortedArray})
 }
 
 makeCharactersSortable = (countTheChars) => {
@@ -61,12 +80,24 @@ extractEmails = (personData) => {
     this.splitCharacters(allEmails)
 }
 
+toggleButtonShows = () => {
+    this.setState({ buttonShows: !this.state.buttonShows })
+}
+
   render() {
     
     return (       
-      <div>
-        content
-      </div>
+      <FreqWrapper>
+        {this.state.buttonShows ? 
+
+        (<StyledButton onClick={this.toggleButtonShows}>
+            Click Here To Show Frequency of Characters In Emails
+        </StyledButton>)
+        :
+        (<ShowFrequency frequency={this.state.frequency}/>)
+        
+        }
+      </FreqWrapper>
     )
   }
 }
