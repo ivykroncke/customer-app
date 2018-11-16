@@ -9,12 +9,47 @@ componentDidMount = async () => {
     this.extractEmails(personData)
 }
 
+sortTheCharacters = (sortableArray) => {
+    const frequencyInIndexOneArray = sortableArray.map((char) => {
+        return (char.reverse())
+    })
+    const sortedArray = frequencyInIndexOneArray.sort(function(a, b) {
+        return a[0] - b[0]
+    })
+    console.log('SortedArray', sortedArray)
+}
+
+makeCharactersSortable = (countTheChars) => {
+    const sortableArray = []
+    for (let character in countTheChars) {
+        const keysIntoIndices = [character, countTheChars[character]]
+        console.log('keysIntoIndices', keysIntoIndices)
+        sortableArray.push(keysIntoIndices)
+    }
+    this.sortTheCharacters(sortableArray)
+}
+
+countCharacters = (allChars) => {
+    const countTheChars = allChars.reduce((allChars, char) => {
+            if(char in allChars) {
+                allChars[char]++
+            }
+            else {
+                allChars[char] = 1
+            }
+            return allChars
+        },
+        {}
+    )
+    this.makeCharactersSortable(countTheChars)
+}
+
 splitCharacters = (allEmails) => {
     const personCharArray = allEmails.map((email) => {
         return ( email.split('') )
     })
-    const allCharsArray = personCharArray.flat()
-    console.log(allCharsArray)
+    const allChars = personCharArray.flat()
+    this.countCharacters(allChars)
 }
 
 extractEmails = (personData) => {
@@ -28,8 +63,7 @@ extractEmails = (personData) => {
 
   render() {
     
-    return (
-        
+    return (       
       <div>
         content
       </div>

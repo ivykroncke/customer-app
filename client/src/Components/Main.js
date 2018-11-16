@@ -29,7 +29,6 @@ export default class Main extends Component {
   componentDidMount = async () => {
     const response = await axios.get(`/api/people/`)
     this.setState({ people: response.data.data})
-    console.log('people in state in main', this.state.people)
   }
 
   render() {
