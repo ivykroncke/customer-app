@@ -9,13 +9,21 @@ componentDidMount = async () => {
     this.extractEmails(personData)
 }
 
+splitCharacters = (allEmails) => {
+    const personCharArray = allEmails.map((email) => {
+        return ( email.split('') )
+    })
+    const allCharsArray = personCharArray.flat()
+    console.log(allCharsArray)
+}
+
 extractEmails = (personData) => {
     let allEmails = []
     personData.forEach((person) => {
         const singleEmail = person.email_address
         allEmails.push(singleEmail)
     })
-    console.log(allEmails)
+    this.splitCharacters(allEmails)
 }
 
   render() {
