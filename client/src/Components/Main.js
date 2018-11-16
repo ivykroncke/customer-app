@@ -3,8 +3,11 @@ import axios from 'axios'
 
 export default class Main extends Component {
 
-  state = {
-    
+  state = {}
+
+  componentDidMount = async () => {
+    const peopleData = await axios.get(`/api/people/`)
+    console.log(peopleData)
   }
 
   render() {
