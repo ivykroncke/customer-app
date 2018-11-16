@@ -42,7 +42,6 @@ makeCharactersSortable = (countTheChars) => {
     const sortableArray = []
     for (let character in countTheChars) {
         const keysIntoIndices = [character, countTheChars[character]]
-        console.log('keysIntoIndices', keysIntoIndices)
         sortableArray.push(keysIntoIndices)
     }
     this.sortTheCharacters(sortableArray)
@@ -94,7 +93,9 @@ toggleButtonShows = () => {
             Click Here To Show Frequency of Characters In Emails
         </StyledButton>)
         :
-        (<ShowFrequency frequency={this.state.frequency}/>)
+        (<ShowFrequency 
+            frequency={this.state.frequency}
+            toggleButtonShows={this.toggleButtonShows}/>)
         
         }
       </FreqWrapper>

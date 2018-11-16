@@ -36,11 +36,12 @@ export default class ShowFrequency extends Component {
 
     return (
       <ShowFreqContainer>
-        <h3>Frequency of Characters in EmailAddresses</h3>
+        <h3>Frequency of Characters in Email Addresses</h3>
         <div>
             <div>character/frequency</div>
             {frequencyList}
         </div>
+        <button onClick={this.props.toggleButtonShows}>Back</button>
       </ShowFreqContainer>
     )
   }
