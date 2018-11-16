@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import Frequency from './Frequency';
 
 const MainContainer = styled.div`
 margin: 5vh 5vw;
@@ -28,7 +29,7 @@ export default class Main extends Component {
   componentDidMount = async () => {
     const response = await axios.get(`/api/people/`)
     this.setState({ people: response.data.data})
-    console.log(this.state.people)
+    console.log('people in state in main', this.state.people)
   }
 
   render() {
@@ -46,6 +47,7 @@ export default class Main extends Component {
     return (
       <MainContainer>
         <StyledHeading>All </StyledHeading>
+        <Frequency people={this.state.people}/>
         <div>{peopleData}</div>
       </MainContainer>
     )
