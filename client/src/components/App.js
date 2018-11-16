@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { LandingPage } from './LandingPage'
+import TestComponent from './TestComponent';
 
 const theme = {
   main: {
@@ -19,17 +20,15 @@ const theme = {
 };
 
 const App = ({ store }) => (
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <Router>
-          <Route exact path="/" component={LandingPage}/>
-      </Router>
-    </ThemeProvider>
+  <Provider 
+  // store={store}
+  >
+    <TestComponent />
   </Provider>
 );
 
-App.propTypes = {
-  store: PropTypes.object.isRequired
-};
+// App.propTypes = {
+//   store: PropTypes.object.isRequired
+// };
 
 export default App

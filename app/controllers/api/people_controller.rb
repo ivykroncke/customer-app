@@ -20,8 +20,4 @@ class Api::PeopleController < ApplicationController
         render json: @people
     end
 
-    def person_params
-        params.require(:person).permit(:email_address, :full_name)
-    end
-
 end
