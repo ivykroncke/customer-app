@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :person
+    resources :people
   end
 
   root to: "main#index"
