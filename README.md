@@ -36,3 +36,6 @@ While I am comfortable with the concepts in Redux, I continued without it in thi
 * View one user view for a closer look at one individual user. This could even render more information about that user via the SL API.
 * A "My Contacts" feature could store contacts to a user so that notes can be made or as a way to only store relevant users.
 * Completing the third tier of development for a fuzzy search to identify possible duplicates.
+
+### Credits
+* (On Styled Version in Dev Branch) Home Photo by rawpixel on Unsplash
