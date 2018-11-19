@@ -3,6 +3,8 @@ import axios from 'axios'
 import styled from 'styled-components'
 import Frequency from './Frequency';
 
+import { Card } from 'semantic-ui-react'
+
 const MainContainer = styled.div`
 margin: 5vh 5vw;
 `
@@ -13,11 +15,11 @@ size: 3rem;
 margin: 5vw;
 `
 
-const ContactContainer = styled.div`
-background-color: lightgray;
-border-radius: 5rem;
-margin: 2vh;
-padding: 5vh 7vw;
+const CardContainer = styled.div`
+display: flex;
+align-items: space-around;
+justify-content: space-around;
+flex-wrap: wrap;
 `
 
 export default class Main extends Component {
@@ -35,11 +37,13 @@ export default class Main extends Component {
 
     const peopleData = this.state.people.map((person, i) => {
       return (
-        <ContactContainer key={i}>
-          <div> {person.display_name} </div>
-          <div> {person.title} </div>
-          <div> {person.email_address} </div>
-        </ContactContainer>
+        <Card key={i}>
+          <Card.Content>
+            <Card.Header> {person.display_name} </Card.Header>
+            <Card.Meta> {person.title} </Card.Meta>
+            <Card.Description> {person.email_address} </Card.Description>
+          </Card.Content>
+        </Card>
         )
     })
 
@@ -47,7 +51,7 @@ export default class Main extends Component {
       <MainContainer>
         <StyledHeading>All People</StyledHeading>
         <Frequency people={this.state.people}/>
-        <div>{peopleData}</div>
+        <CardContainer>{peopleData}</CardContainer>
       </MainContainer>
     )
   }
