@@ -5,14 +5,15 @@ import Frequency from './Frequency';
 
 import { Card } from 'semantic-ui-react'
 
-const MainContainer = styled.div`
-margin: 5vh 5vw;
+const HeadingContainer = styled.div`
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin: 8vh;
 `
 
-const StyledHeading = styled.h1`
-text-align: center;
-size: 3rem;
-margin: 5vw;
+const MainContainer = styled.div`
+margin: 5vh 5vw;
 `
 
 const CardContainer = styled.div`
@@ -49,8 +50,9 @@ export default class Main extends Component {
 
     return (
       <MainContainer>
-        <StyledHeading>All People</StyledHeading>
-        <Frequency people={this.state.people}/>
+        <HeadingContainer>
+          <Frequency people={this.state.people}/>
+        </HeadingContainer>
         <CardContainer>{peopleData}</CardContainer>
       </MainContainer>
     )

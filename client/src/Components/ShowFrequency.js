@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import { Dropdown, Segment, Icon } from 'semantic-ui-react'
+
 const ShowFreqContainer = styled.div`
 width: 100%;
 display: flex;
@@ -9,17 +11,8 @@ align-items: center;
 justify-content: center;
 `
 
-const CharContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-`
-
-const Char = styled.div`
-width: 10vw;
-background-color: lightgray;
-margin: 1vh .5vw;
-padding: 3vw;
+const StyledFreq = styled.div`
+text-align: center;
 `
 
 export default class ShowFrequency extends Component {
@@ -27,21 +20,17 @@ export default class ShowFrequency extends Component {
 
     const frequencyList = this.props.frequency.map((freq, i) => {
         return(
-            <CharContainer key={i}>
-                <Char> {freq[1]} </Char>
-                <Char> {freq[0]} </Char>
-            </CharContainer>
+            <div key={i}>
+                <StyledFreq> {freq[1]} - {freq[0]} </StyledFreq>
+            </div>
         )
     })
 
     return (
       <ShowFreqContainer>
-        <h3>Frequency of Characters in Email Addresses</h3>
-        <div>
-            <div>character/frequency</div>
-            {frequencyList}
-        </div>
-        <button onClick={this.props.toggleButtonShows}>Back</button>
+        <h4>Frequency of Characters in Email Addresses</h4>
+        <Dropdown placholder="Select to view" fluid selection options={frequencyList}></Dropdown>
+        <div onClick={this.props.toggleButtonShows}><Icon name="close"/> Close </div>
       </ShowFreqContainer>
     )
   }

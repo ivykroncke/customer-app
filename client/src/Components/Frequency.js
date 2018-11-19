@@ -3,16 +3,14 @@ import axios from 'axios';
 import ShowFrequency from './ShowFrequency';
 import styled from 'styled-components'
 
+import { Button } from 'semantic-ui-react'
+
 const FreqWrapper = styled.div`
-text-align: center;
+width: 75%;
 `
 
-const StyledButton = styled.div`
-background-color: darkgray;
-border-radius: 2rem;
-color: white;
-padding: 3vh;
-margin: 5vh;
+const StyledContent = styled.div`
+padding-bottom: 2vh;
 `
 
 export default class Frequency extends Component {
@@ -89,14 +87,22 @@ toggleButtonShows = () => {
       <FreqWrapper>
         {this.state.buttonShows ? 
 
-        (<StyledButton onClick={this.toggleButtonShows}>
-            Click Here To Show Frequency of Characters In Emails
-        </StyledButton>)
+        (<div className="ui raised segment" >
+            <StyledContent>
+                <h3>Welcome to the People App</h3>
+                <div>Below are all of the contacts in your network.</div>
+                <div>Click the button below to view the frequency of all characters in all the emails shown.</div>
+            </StyledContent>
+            <Button basic color="grey" onClick={this.toggleButtonShows}>
+                Show Frequency
+            </Button>
+        </div>)
         :
-        (<ShowFrequency 
+        (<div className="ui raised segment" >
+        <ShowFrequency 
             frequency={this.state.frequency}
-            toggleButtonShows={this.toggleButtonShows}/>)
-        
+            toggleButtonShows={this.toggleButtonShows}/>
+        </div>)
         }
       </FreqWrapper>
     )
