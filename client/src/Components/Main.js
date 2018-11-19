@@ -3,7 +3,8 @@ import axios from 'axios'
 import styled from 'styled-components'
 import Frequency from './Frequency';
 
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
+import ShowOnePerson from './ShowOnePerson';
 
 const HeadingContainer = styled.div`
 display: flex;
@@ -26,7 +27,9 @@ flex-wrap: wrap;
 export default class Main extends Component {
 
   state = {
-    people: []
+    people: [],
+    viewOne: false,
+    idForShow: 0
   }
 
   componentDidMount = async () => {
@@ -50,6 +53,17 @@ export default class Main extends Component {
     this.setState({ people: alphabetizedPeople })
   }
 
+  getId = (event) => {
+    event.preventDefault()
+    const idClicked = event.target.value
+    this.setState({ idForShow: idClicked, viewOne: !this.state.viewOne })   
+  }
+
+  exitShowOnePerson = () => {
+    console.log('exitShowOneperson works')
+    this.setState({ viewOne: !this.state.viewOne })
+  }
+
   render() {
 
     const peopleData = this.state.people.map((person, i) => {
@@ -60,16 +74,26 @@ export default class Main extends Component {
             <Card.Meta> {person.title} </Card.Meta>
             <Card.Description> {person.email_address} </Card.Description>
           </Card.Content>
+          <Button onClick={this.getId} value={person.id} basic color="grey" size="tiny">View More</Button>
         </Card>
         )
     })
 
     return (
       <MainContainer>
-        <HeadingContainer>
-          <Frequency people={this.state.people}/>
-        </HeadingContainer>
-        <CardContainer>{peopleData}</CardContainer>
+        {this.state.viewOne ? 
+          (<ShowOnePerson 
+            people={this.state.people} 
+            idForShow={this.state.idForShow}
+            exitShowOnePerson={this.exitShowOnePerson}/>)
+          :
+          (<div>
+            <HeadingContainer>
+              <Frequency people={this.state.people}/>
+            </HeadingContainer>
+            <CardContainer>{peopleData}</CardContainer>
+          </div>)}
+
       </MainContainer>
     )
   }
