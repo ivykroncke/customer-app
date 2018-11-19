@@ -31,6 +31,9 @@ My strategy for organizing this app's architecture was to nest components as muc
 
 While I am comfortable with the concepts in Redux, I continued without it in this application to turn this around in a more reasonable amount of time. I do think as this application grows, Redux would help manage state to be more accessible throughout the application. At its current size, Redux is not absolutely necessary and it was easy enough for me to pass props along and call the API as needed.
 
+####Dev Branch
+The Development Branch contains additional styling and a view one contact feature added after original submission.
+
 ### Future Development
 * Auth for controlling who sees what data here.
 * View one user view for a closer look at one individual user. This could even render more information about that user via the SL API.
