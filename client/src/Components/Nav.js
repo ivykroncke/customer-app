@@ -8,7 +8,7 @@ margin: 0 auto;
 
 const InfoBar = styled.div`
 height: 8vh;
-padding: 2vh;
+padding: 2vh 2vw;
 background-color: rgb(23, 48, 73);
 color: white;
 text-align: right;

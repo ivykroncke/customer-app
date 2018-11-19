@@ -31,7 +31,23 @@ export default class Main extends Component {
 
   componentDidMount = async () => {
     const response = await axios.get(`/api/people/`)
-    this.setState({ people: response.data.data})
+    const people = response.data.data
+    this.alphabetizePeople(people)
+  }
+
+  alphabetizePeople = (people) => {
+    const alphabetizedPeople = people.sort((a,b) => {
+      const lastNameA = a.last_name.toUpperCase()
+      const lastNameB = b.last_name.toUpperCase()
+      if (lastNameA < lastNameB) {
+        return -1;
+      }
+      if (lastNameA > lastNameB) {
+        return 1;
+      }
+      return 0;
+    })
+    this.setState({ people: alphabetizedPeople })
   }
 
   render() {
