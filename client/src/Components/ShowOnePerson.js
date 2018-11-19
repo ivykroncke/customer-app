@@ -46,6 +46,8 @@ export default class ShowOnePerson extends Component {
                 <StyledHeading>
                     <Icon name="user circle" size="huge"/>
                     <h3>{this.state.person.display_name}</h3>
+                    <div>{this.state.person.title}</div>
+                    <div>{this.state.person.city}, {this.state.person.state}</div>
                 </StyledHeading>
 
                 <ShowOneContainer>

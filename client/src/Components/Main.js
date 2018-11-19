@@ -13,6 +13,10 @@ align-items: center;
 margin: 8vh;
 `
 
+const ButtonRoom = styled.div`
+padding-top: 1rem;
+`
+
 const MainContainer = styled.div`
 margin: 5vh 5vw;
 `
@@ -73,8 +77,10 @@ export default class Main extends Component {
             <Card.Header> {person.display_name} </Card.Header>
             <Card.Meta> {person.title} </Card.Meta>
             <Card.Description> {person.email_address} </Card.Description>
+            <ButtonRoom>
+              <Button onClick={this.getId} value={person.id} basic color="grey" size="tiny">View More</Button>
+            </ButtonRoom>
           </Card.Content>
-          <Button onClick={this.getId} value={person.id} basic color="grey" size="tiny">View More</Button>
         </Card>
         )
     })
