@@ -1,2 +1,2 @@
-web: bundle exec rails s -p $API_PORT
+web: sh -c 'cd client && PORT=3000 npm start'
 webpack: npm start -- --port=$WEBPACK_PORT
