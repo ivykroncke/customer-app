@@ -9,6 +9,9 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
+    "dependencies": {
+        "react-scripts": "2.1.1"
+    },
     "browserslist": [
         ">0.2%",
         "not dead",
