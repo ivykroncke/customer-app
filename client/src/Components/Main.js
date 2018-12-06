@@ -64,7 +64,6 @@ export default class Main extends Component {
   }
 
   exitShowOnePerson = () => {
-    console.log('exitShowOneperson works')
     this.setState({ viewOne: !this.state.viewOne })
   }
 

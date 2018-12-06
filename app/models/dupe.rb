@@ -1,0 +1,2 @@
+class Dupe < ApplicationRecord
+end
