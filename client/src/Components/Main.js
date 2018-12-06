@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import Frequency from './Frequency';
+import Analyze from './Analyze'
 
 import { Card, Button } from 'semantic-ui-react'
 import ShowOnePerson from './ShowOnePerson';
@@ -95,11 +95,10 @@ export default class Main extends Component {
           :
           (<div>
             <HeadingContainer>
-              <Frequency people={this.state.people}/>
+              <Analyze people={this.state.people}/>
             </HeadingContainer>
             <CardContainer>{peopleData}</CardContainer>
           </div>)}
-
       </MainContainer>
     )
   }

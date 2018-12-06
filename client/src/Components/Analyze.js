@@ -4,6 +4,8 @@ import ShowFrequency from './ShowFrequency';
 import styled from 'styled-components'
 
 import { Button } from 'semantic-ui-react'
+import { Duplex } from 'stream';
+import Duplicates from './Duplicates';
 
 const FreqWrapper = styled.div`
 width: 75%;
@@ -13,7 +15,7 @@ const StyledContent = styled.div`
 padding-bottom: 2vh;
 `
 
-export default class Frequency extends Component {
+export default class Analyze extends Component {
     state = {
         frequency: [],
         buttonShows: true
@@ -90,18 +92,24 @@ toggleButtonShows = () => {
         (<div className="ui raised segment" >
             <StyledContent>
                 <h3>Welcome to the People App</h3>
-                <div>Below are all of the contacts in your network.</div>
-                <div>Click the button below to view the frequency of all characters in all the emails shown.</div>
+                <p>Below are all of the contacts in your network.</p>
+                <div>Click the button below to launch Analyze mode where you can view character count in all emails and suggested duplicates.</div>
             </StyledContent>
             <Button basic color="grey" onClick={this.toggleButtonShows}>
-                Show Frequency
+                Analyze
             </Button>
         </div>)
         :
-        (<div className="ui raised segment" >
-        <ShowFrequency 
-            frequency={this.state.frequency}
-            toggleButtonShows={this.toggleButtonShows}/>
+        (
+        <div>
+            <div className="ui raised segment" >
+                <ShowFrequency 
+                    frequency={this.state.frequency}
+                    toggleButtonShows={this.toggleButtonShows}/>
+                </div>
+            <div className="ui raised segment" >
+                <Duplicates />
+            </div>
         </div>)
         }
       </FreqWrapper>
