@@ -17,7 +17,8 @@ padding-bottom: 2vh;
 export default class Analyze extends Component {
     state = {
         frequency: [],
-        buttonShows: true
+        buttonShows: true,
+        emails: []
     }
 
 componentDidMount = async () => {
@@ -76,6 +77,7 @@ extractEmails = (personData) => {
         allEmails.push(singleEmail)
     })
     this.splitCharacters(allEmails)
+    this.setState({emails: allEmails})
 }
 
 toggleButtonShows = () => {
@@ -107,7 +109,8 @@ toggleButtonShows = () => {
                     toggleButtonShows={this.toggleButtonShows}/>
                 </div>
             <div className="ui raised segment" >
-                <Duplicates />
+                <Duplicates 
+                    emails={this.state.emails}/>
             </div>
         </div>)
         }
